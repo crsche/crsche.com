@@ -1,11 +1,9 @@
 {
   "name": "liveterm",
   "version": "0.1.0",
-  "license": "MIT",
+  "license": "Apache-2.0",
   "author": {
-    "name": "Vincent Wu",
-    "url": "https://cveinnt.com",
-    "email": "contact@wensenwu.com"
+    "name": "Conor Scheidt"
   },
   "scripts": {
     "dev": "next dev",
