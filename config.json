@@ -1,0 +1,37 @@
+{
+  "readmeUrl": "https://raw.githubusercontent.com/cveinnt/cveinnt/master/README.md",
+  "title": "Conor Scheidt",
+  "name": "Conor Scheidt",
+  "ascii": "crsche",
+  "social": {
+    "github": "github",
+    "linkedin": "linkedin"
+  },
+  "email": "redacted",
+  "ps1_hostname": "crsche",
+  "ps1_username": "visitor",
+  "repo": "https://github.com/crsche/crsche.com",
+  "resume_url": "https://upload.wikimedia.org/wikipedia/commons/c/cc/Resume.pdf",
+  "bio": "Placeholder",
+
+  "colors": {
+    "light": {
+      "background": "#FBF1C9",
+      "foreground": "#3C3836",
+      "yellow": "#D79921",
+      "green": "#98971A",
+      "gray": "#7C6F64",
+      "blue": "#458588",
+      "red": "#CA2124"
+    },
+    "dark": {
+      "background": "#1c1c1c",
+      "foreground": "#EBDBB2",
+      "yellow": "#D79921",
+      "green": "#98971A",
+      "gray": "#A89984",
+      "blue": "#458588",
+      "red": "#CA2124"
+    }
+  }
+}
