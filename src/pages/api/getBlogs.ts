@@ -8,7 +8,7 @@ export default async function handler(
   // TODO: CLient vs server side caching
   res.setHeader(
     'Cache-Control',
-    'public, s-maxage=60, stale-while-revalidate=3600',
+    'public, s-maxage=3600, stale-while-revalidate=86400',
   );
 
   const blogs = await getBlogsMetadata();
