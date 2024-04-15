@@ -32,7 +32,9 @@ export const repo = async (args: string[]): Promise<string> => {
 
 // FIXME: Make this shit not hard coded
 export const blogs = async (args: string[]): Promise<string> => {
-  const blogs = ['Post-Quantum Cryptography [March 1 2024]'];
+  const blogs = [
+    '<a href="/blogs/pqc">Post-Quantum Cryptography [March 1 2024]</a>',
+  ];
   return blogs.join('\n');
 };
 
