@@ -12,5 +12,6 @@ export default async function handler(
   );
 
   const blogs = await getBlogsMetadata();
+  console.warn(`recached getBlogs`);
   res.status(200).json(blogs);
 }

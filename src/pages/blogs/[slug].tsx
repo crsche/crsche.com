@@ -21,6 +21,8 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   const slug = params?.slug as string;
   const fname = `${slug}.mdx`;
   const post = await getBlogPost(fname);
+  // eslint-disable-next-line no-console
+  console.warn(`recached post: ${slug}`);
 
   return { props: { post }, revalidate: 3600 };
 };
@@ -32,7 +34,7 @@ const BlogPage: React.FC<BlogPageProps> = ({ post }) => {
         <title>{post.metadata.title}</title>
       </Head>
 
-      <div className="h-full max-w-full overflow-y-auto  p-8 border-2 rounded scroll-auto border-light-yellow dark:border-dark-yellow prose prose-invert">
+      <div className="h-full max-w-full overflow-y-auto  p-8 border-2 rounded scroll-auto border-light-yellow dark:border-dark-yellow prose dark:prose-invert">
         <MDXRemote {...post.content} />
       </div>
     </>
