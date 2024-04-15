@@ -12,10 +12,12 @@ module.exports = {
       current: 'currentColor',
       ...colors,
     },
-    extend: {},
+    extend: {
+      colors,
+    },
   },
   variants: {
     extend: {},
   },
-  plugins: [],
+  plugins: [require('@tailwindcss/typography')],
 };

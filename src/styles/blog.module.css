@@ -1,0 +1,22 @@
+.mainContainer {
+  display: grid;
+  grid-template-columns: 250px 1fr 250px;
+  gap: 20px;
+  overflow: hidden;
+}
+
+.sidebar {
+  position: fixed; /* Change from sticky to fixed */
+  top: 20px;
+  left: 0; /* Sidebar sticks to the left edge */
+  height: calc(100vh - 40px);
+  overflow-y: hidden; /* Enable sidebar scrolling if needed */
+}
+
+/* Similar rule for .sidebar-right, but with right: 0 */
+
+.blogContent {
+  overflow-y: scroll; /* Enable scrolling on the blog content */
+  overflow: scroll;
+  background-size: cover; /* Key property! */
+}

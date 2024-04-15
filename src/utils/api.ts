@@ -1,5 +1,6 @@
 import axios from 'axios';
 import config from '../../config.json';
+import { BlogPostData } from './blogs';
 
 export const getProjects = async () => {
   const { data } = await axios.get(
@@ -12,6 +13,7 @@ export const getReadme = async () => {
   const { data } = await axios.get(config.readmeUrl);
   return data;
 };
+
 
 export const getWeather = async (city: string) => {
   try {

@@ -1,0 +1,345 @@
+---
+title: Post-Quantum Cryptography
+date: March 1 2024
+tags: cryptography, social-awareness, security, quantum-computing
+---
+
+# The Internet
+
+## Intro
+
+Imagine a tangled mess of roads, stretching across the whole world, connecting every single town and city. Now imagine those roads are invisible beams of light, and the cars are tiny bursts of information. That, in very simple terms, is the internet—the thing you use every day! It's a huge and [ever-growing](https://en.wikipedia.org/wiki/Global_Internet_usage) global network of computers all talking to each other.
+
+- **Websites: Your Digital Storefronts**
+  Websites are like storefronts on the internet. You can wander from one to the other, window-shopping for information, pictures, videos, or [anything else you can dream up](http://endless.horse). Each website has a unique address, just like a physical shop. For example, to visit Google, you'd type '[www.google.com](https://www.google.com/)' into your web browser.
+
+- **Web Servers: The Power Behind the Curtain**
+  But how do websites actually work? That's where web servers come in. These are powerful computers that store all the ingredients of a website: the text, the images, even the code that makes it all tick. When you type in a website address, your computer sends a [message](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods/GET) to the website's server asking to see the page. The server then whizzes all the data back to you, which your web browser neatly arranges on your screen. Servers are typically stored in big data centers and maintained by big companies like [Google](https://cloud.google.com), [Amazon](https://aws.amazon.com), and [Microsoft](https://azure.microsoft.com/en-us).
+
+![](/assets/blog-imgs/pqc/www.png)
+**Source**: [The World-Wide Web](https://www.w3.org/People/Frystyk/thesis/WWW.html)
+
+- **HTML: The Language of the Web**
+  Think of websites as buildings, and [HTML](https://developer.mozilla.org/en-US/docs/Web/HTML) (Hypertext Markup Language) is the bricks and mortar. It's the programming that tells your browser how to display text, where to put images, and how to make the website interactive. Websites often have other programming languages working alongside HTML, but it's the basic foundation for nearly every website you visit, and it can do [a lot](https://html.spec.whatwg.org):
+
+- **The World Wide Web—It's Not The Same as The Internet**
+  The World Wide Web, or "the web" for short, is what most people think of when they talk about the internet. It's the massive collection of websites linked together. But the internet itself is bigger than that. It also includes things like the infrastructure of cables and the way computers communicate, which is where protocols like TCP/IP come into play (don't worry, we won't get too far into the weeds).
+
+![](/assets/blog-imgs/pqc/internet.png)
+**Source**: [Information Management: A Proposal](https://www.w3.org/History/1989/proposal.html)
+
+- **Staying Safe Out There: The Importance of Web Security**
+  The internet is an amazing playground for learning and connecting. But just like the real world, it has a shadier side. Hackers and cybercriminals are lurking in the corners, ready to snatch your personal data or steal money.
+
+## Web Security
+
+- **HTTPS – The Lock on Your (Web) Door**
+  When you see a website address that starts with 'https' (the 's' is the important part), it means the website is secured. This is thanks to a clever technology called [TLS](https://www.cloudflare.com/learning/ssl/transport-layer-security-tls/) (Transport Layer Security). It encrypts the data traveling between your computer and the website, making it like a secret, scrambled message that only you and the website can understand. Look for that little padlock icon in your browser's address bar – that's your assurance of data security, authenticity, and integrity.
+  ![](/assets/blog-imgs/pqc/httpvshttps.png)
+  **Source**: [Protocol Stacks](https://www.researchgate.net/figure/The-Hypertext-Transfer-Protocol-HTTP-and-Hypertext-Transfer-Protocol-Secure-HTTPS_fig1_320479973)
+
+## Cryptography
+
+How we keep our online communication secure:
+
+- **Key Exchange: Establishing the Secret Code**
+  Think of modern encryption like having a secure lockbox To open it, you and the other person need the same key. But how do you get a matching key to someone over the insecure internet without someone else stealing it? That's where key exchange mechanisms come in.
+
+  Clever mathematics and algorithms, like the famous Diffie-Hellman key exchange, allow two computers to create a shared secret key over a public connection. It's like mixing colors in the middle of a crowded room – with a bit of clever math, only you and the other person will end up with the exact same shade, even though everyone else can see the process.
+
+![](/assets/blog-imgs/pqc/dhexchange.png)
+
+**Source**: [Epachamo - Own work, CC BY-SA 4.0,](https://commons.wikimedia.org/w/index.php?curid=142206661)
+
+- **Symmetric Cryptography: "Military-grade Encryption"**
+  Once you and the website have a shared secret key, you need a way to actually encrypt your data. That's where symmetric cryptography comes in, and AES (Advanced Encryption Standard)—often referred to as "military grade"—is one of the stars of the show. AES is like an industrial-grade (or maybe military grade...) shredder and reassembler – it takes your readable information, chops it into tiny, scrambled pieces, and then puts it back together in a way that can only be understood with that shared secret key. It's fast, efficient, and considered super-strong protection.
+
+## The Quantum Threat: A Storm on the Horizon
+
+While today's cryptography keeps us pretty safe, there's a potential storm brewing on the horizon – quantum computers. These incredibly complex machines operate on principles [fundamentally different](https://www.scientificamerican.com/article/what-makes-a-quantum-comp/) from the traditional computers we're used to. With this difference comes the potential to unravel some of the encryption methods we depend on to secure online communication. While they won't threaten all types of encryption equally, and powerful quantum computers are still years away, it's essential to grasp the basics of why cryptography needs to evolve.
+
+# Quantum Computers: Harnessing the Weirdness of the Very Small
+
+Let's break down what makes quantum computers so unique:
+
+- **Qubits: The Power of Superposition**
+  Think of bits in traditional computers as countless tiny light switches, each definitively 'on' (representing a 1) or 'off' (representing a 0). These 0s and 1s form the backbone of everything your computer does. Quantum computers, however, play by a different rulebook. They use something called qubits. A qubit isn't limited to being just 1 or 0, it can exist in a strange in-between state called 'superposition', where it's effectively both 0 and 1 at the same time. This mind-bending concept is rooted in the weird world of quantum physics!
+
+![](/assets/blog-imgs/pqc/quantumcomp.png)
+
+**Source**: [Quanta Magazine](https://www.quantamagazine.org)
+
+- **Entanglement: A Confusing Connection**
+  Another bizarre yet powerful property of the quantum world is '[entanglement](https://www.space.com/31933-quantum-entanglement-action-at-a-distance.html)'. This is where two or more qubits become mysteriously linked. Their fates become so intertwined that measuring one instantly affects the others, regardless of how far apart they are. Imagine if flipping a coin somehow caused a different identical coin across the room to land on the opposite face, instantly!
+- **Quantum Problem-Solving: Exploring Multiple Paths at Once**
+  These properties let quantum computers tackle problems in radically different ways from their classical counterparts. While regular computers are excellent at linear thinking – doing one calculation, then the next, then the next – a powerful quantum machine could explore a vast number of potential solutions simultaneously. It's like being able to explore every path of a complex maze, all at once.
+- **Shor's Algorithm: Cracking the Code**
+  In the 1990s, mathematician [Peter Shor](https://math.mit.edu/~shor/) devised an algorithm that, if run on a powerful enough quantum computer, could jeopardize some of our most secure cryptography methods. This includes the types of encryption we use to establish shared secret keys when you connect to any website using HTTPS. Remember how AES is incredibly secure? Sadly, getting that shared AES key to both you and the website securely matters a lot, and quantum computers could unravel the methods currently used. The math is very complicated, and you can read more [here](https://www.classiq.io/insights/shors-algorithm-explained)
+- **Grover's Algorithm: Speeding Up the Search**
+  [Grover's algorithm](https://learning.quantum.ibm.com/course/fundamentals-of-quantum-algorithms/grovers-algorithm) is another quantum algorithm of note. It's essentially like supercharging a search engine. While this could theoretically make finding the correct key to decrypt AES encryption easier, the overall impact isn't as devastating as Shor's algorithm could be. Think of Grover's as speeding things up, but Shor's as a whole new toolkit.
+
+**The 'Harvest Now, Decrypt Later' Threat**
+One of the most significant concerns surrounding quantum computers isn't just about breaking encryption in the moment but the possibility of "harvest now, decrypt later" attacks. Here's what this means:
+
+- **Data with Long-term Value:** Consider your health records, financial data, or sensitive intellectual property. This type of information needs to remain confidential not just today, but for years or even decades.
+- **The Hoarder:** A powerful adversary, like a nation-state or well-funded corporation, could start secretly intercepting and storing encrypted communications today. Even though they can't crack them immediately, they're banking on the technology to do so becoming available in the future.
+- **The Future Breakthrough:** Once powerful enough quantum computers exist, this hoarded data could be decrypted, potentially revealing extremely sensitive information that was meant to be secure far into the future.
+
+**The Future of Cryptography**
+Quantum computers are still in their infancy, but the cryptographic community is [well aware](https://www.scientificamerican.com/article/tomorrows-quantum-computers-threaten-todays-secrets-heres-how-to-protect-them-2/) of their potential. Researchers worldwide are actively developing new encryption algorithms believed to be resistant to even powerful quantum computers. This field is often called 'post-quantum cryptography' (PQC), and it's key to safeguarding our data in the years to come.
+
+# Post-Quantum Cryptography (PQC)
+
+As quantum computers edge closer to breaking long-established forms of asymmetric cryptography, the quest to develop replacements is at full throttle. This is where PQC takes center stage. The National Institute of Standards and Technology (NIST) has led a [multi-year effort](https://csrc.nist.gov/Projects/Post-Quantum-Cryptography) to standardize secure PQC algorithms, providing a variety of options to ensure unbreakable data transmission in a world with powerful quantum machines.
+
+**NIST's Chosen Few & Additional Candidates**
+
+After rigorous evaluation rounds, NIST [selected a primary set of algorithms](https://www.nist.gov/news-events/news/2022/07/nist-announces-first-four-quantum-resistant-cryptographic-algorithms) in July 2022 for various applications. However, the PQC landscape doesn't stop there. NIST also shortlisted additional candidates, which remain under active research and scrutiny. Here are some approaches researchers used to defeat quantum computers:
+
+- **Lattice-based Cryptography**
+
+  - **Examples:** [CRYSTALS-Kyber](https://pq-crystals.org/kyber/) (key exchange), [CRYSTALS-Dilithium](https://pq-crystals.org/dilithium/index.shtml) (digital signatures)
+  - **The Math:** Lattice-based cryptography builds its security upon the immense complexity of problems within multi-dimensional structures called 'lattices'. Operations like finding the shortest path within a lattice are believed to remain extraordinarily difficult even for the most powerful quantum computers. These complex lattice problems form the foundation for secure key exchanges and digital signatures.
+  - **Differences:** Unlike classic approaches like RSA and Diffie-Hellman, which rely on the difficulty of factoring large numbers or solving discrete logarithms, lattice-based methods use a fundamentally unrelated mathematical problem. This difference is the cornerstone of their anticipated resistance to quantum attacks.
+
+- **Code-based Cryptography**
+
+  - **Example:** [Classic McEliece](https://classic.mceliece.org) (key exchange)
+  - **The Math:** Code-based cryptography leverages the field of error-correcting codes, the type used to ensure data integrity in digital transmissions. These schemes deliberately introduce specially designed "errors" into messages in a way that's mathematically designed for easy correction if you know the secret key. For any potential eavesdropper without this knowledge, cracking the code becomes incredibly complicated.
+  - **Differences:** Code-based systems were invented back in the 1970s but were eclipsed by the efficiency of other cryptographic methods. Interestingly, their underlying mathematical problems have no relation to the ones quantum computers excel at, making them an intriguing potential contender. One downside is that these algorithms can often lead to very large key sizes, presenting practical challenges.
+
+- **Multivariate Cryptography**
+  - **Example:** [SIKE](https://sike.org) (key exchange)
+  - **The Math:** Multivariate systems rely on carefully constructed systems of equations with multiple variables. The core idea is that directly solving a large system of non-linear equations over a finite field becomes immensely complex.
+  - **Differences:** Like code-based schemes, multivariate cryptography hails from an older era of cryptographic research. Its resistance stems from a class of problems not directly threatened by the algorithms quantum computers are expected to break easily. This makes it a valuable alternative approach to ensure security.
+
+**Not One Size Fits All: The Importance of Diversity**
+
+The cryptographic community understands there's no single "silver bullet" algorithm. PQC offers a diverse toolkit for several crucial reasons:
+
+- **Performance Trade-offs:** Each type of algorithm comes with trade-offs. Some excel in lightning-fast key exchange, while others focus on minimizing storage requirements for signatures. Different scenarios will naturally prioritize different aspects, requiring a flexible suite of options.
+- **Uncertainty:** While we anticipate these algorithms to be quantum-resistant, there's certainly the possibility for unforeseen discoveries. Unexpected breakthroughs might uncover potential weaknesses in one category, highlighting the necessity of having a diversified set of options in our security toolbox.
+
+**The Road Ahead: Evolution, Optimization...and Experimentation!**
+
+The world of PQC is abuzz with activity. NIST's shortlisted candidates are under continuous scrutiny for security and efficiency, while researchers constantly push boundaries with new ideas and refinements. Standardization is an ongoing journey, fueled by the desire to guarantee our digital world remains secure as technology enters an era of profound transformation.
+
+But you don't just have to read about PQC, you can experience it directly. Organizations like the [Open Quantum Safe](https://openquantumsafe.org) (OQS) project are actively making quantum-resistant cryptography more accessible. In fact, OQS has quite a few resources for experimentation, so how about we use them.
+
+# A Chromium Interlude (Experiment)
+
+To no one's surprise, Google Chrome is, by far, the most popular browser on both mobile and desktop platforms, with a staggering [64% market share](https://gs.statcounter.com/browser-market-share) as of January 2024. But what many don't know is that it, along with many other widely-used browsers—[Edge](https://www.microsoft.com/en-us/edge?ep=313&form=MA13M0&es=40) and [Opera](https://www.opera.com) to name a few—is based on an open-source([ish](https://www.zdnet.com/home-and-office/networking/google-should-really-open-source-chromium/)) browser named [Chromium](https://www.chromium.org/Home/) (that Google [really doesn't want you to download](https://medium.com/@aidansw/google-really-doesnt-want-you-to-use-chromium-e58ad62df3f6)). In fact, the appearance of Google Chrome is nearly identical to that of Chromium:
+
+![](/assets/blog-imgs/pqc/chromium.png)
+
+As you might've noticed, Google Chrome is on the left and Chromium is on the right. The main selling point of Chromium as a standalone browser is its incredible [speed](https://blog.chromium.org/2023/06/how-chrome-achieved-high-scores-on.html) and limited integration with privacy-harming Google services present in its Chrome counterpart, though it is important to mention that Google still holds a [firm grip](https://www.cnet.com/tech/mobile/google-gets-web-allies-by-letting-outsiders-help-build-chromes-foundation/) over Chromium's development. But, as mentioned above, Chromium's primary role is that of a "base" for other browsers—just slap some branding and licensing onto some downloaded code and you've got yourself a state-of-the-art browser. Perhaps you can see the problem here: there's a huge monoculture problem because everyone almost everyone—[81%](https://gs.statcounter.com/browser-market-share/desktop/worldwide) of desktops—uses a Chromium-based browser, which could cause some [very big problems for privacy](https://vivaldi.com/blog/googles-new-dangerous-web-environment-integrity-spec/).
+
+### Desktop Browser Market Share
+
+#### January 2023 - February 2024
+
+![](/assets/blog-imgs/pqc/marketshare.png)
+_Source_: [StatCounter Global Stats - Browser Market Share](https://gs.statcounter.com/browser-market-share/desktop/worldwide)
+
+This browser monoculture also has its upsides. First, it's near impossible ([seriously](https://openhub.net/p/chrome/analyses/latest/languages_summary), 40 million lines of clean code is no joke) to create a browser that works with the last three decades of web technology and its [quirks](https://developer.mozilla.org/en-US/docs/Web/HTML/Quirks_Mode_and_Standards_Mode). Second and most relevant to the focus of this blog post, it's convenient for wide-scale [experiments](https://support.google.com/chrome/answer/10612145?hl=en) and their subsequent standardizations. Chromium's status as the de-facto standard for modern web browsers, coupled with its open-sourcing, makes it a fantastic testbed for PQC-secured web browsing.
+
+While this certainly isn't easy to implement, it's possible, and we have to start with how Chromium makes itself secure. In general, [Chromium's architecture](https://seclab.stanford.edu/websec/chromium/chromium-security-architecture.pdf) is the [industry standard](https://www.chromium.org/Home/chromium-security/brag-sheet/) when it comes to browser security, but we're more interested in how it approaches the transport-layer security (TLS) in HTTPS (how the browser securely fetches media). Chromium, in all its Googled glory, uses a library created by Google named [BoringSSL](https://www.chromium.org/Home/chromium-security/boringssl/) for TLS algorithms—a derivative of another popular library called [OpenSSL](https://www.openssl.org). The main difference between BoringSSL and its parent is that it is slightly more experimental and faster in development. This is understandable because OpenSSL is effectively the [standard TLS implementation](https://www.nginx.com/resources/glossary/openssl/#:~:text=Feature%20rich%20–%20OpenSSL%20provides%20a,%2C%20and%20certificate%2Drelated%20operations.) and therefore doesn't have a lot of room for experimentation.
+
+The intent of these "SSL" libraries is to provide reliable implementations of the various cryptographic algorithms required for TLS, but right now TLS doesn't include anything post quantum (even though there are [large efforts](https://openquantumsafe.org) to integrate PQC) so neither do these libraries. Our job is to add PQC to these fully-featured SSL libraries ourselves.
+
+But how the heck do we even approach doing that? These SSL libraries, just like browsers, are also [very complicated](https://openhub.net/p/openssl) and very critical to security. Lucky for us, both [Cloudflare](https://github.com/cloudflare/boringssl-pq) and the [Open Quantum Safe project](https://github.com/open-quantum-safe/boringssl) (OQS) have forks of BoringSSL with post-quantum algorithms added and all we need to do is to transplant one of these forks into Chromium—which is also a lot harder than it sounds.
+
+## Transplanting OQS-BoringSSL into Chromium
+
+Note: This part of the blog is styled more computer science oriented: more headers, code, etc. Intended as a proof of concept, you might want to skip it.
+
+### 1. Chromium Source Code
+
+#### 1a. Installing `depot-tools`
+
+To start, we need to obtain a copy of Chromium's source code. To begin, install [`depot-tools`](https://www.chromium.org/developers/how-tos/depottools/)—a tool for managing Chromium's source code repository:
+
+```bash
+git clone https://chromium.googlesource.com/chromium/tools/depot_tools.git
+```
+
+We then need to make the scripts provided by `depot-tools` accessible to us by making sure we can run them from our shell. We can do this by adding `depot-tools` to our `$PATH`, be sure to make the path absolute (eg no `./` or `~/`):
+
+```shell
+export PATH="/absolute/path/to/depot-tools:$PATH"
+```
+
+On [Fish](https://fishshell.com), you can also do this:
+
+```sh
+fish_add_path "/absolute/path/to/depot-tools"
+```
+
+#### 1b. Fetching Chromium Source
+
+`depot-tools` can now be used to clone (download) [Chromium source](https://chromium.googlesource.com/chromium/src.git), but not just yet, we need to put the code somewhere. Create a new directory to house everything related to Chromium. I recommend doing this in your [home directory](https://www.linfo.org/home_directory.html) (which is typically specified by `~`):
+
+```sh
+mkdir ~/chromium
+cd ~/chromium
+```
+
+Now use the `fetch` command line tool to download Chromium source into the directory we just created:
+
+```sh
+fetch --no-hooks chromium
+```
+
+The `--no-hooks` argument tells `depot-tools` not to process dependencies just yet, because we still need to install them.
+The command will take a significant time to finish, anywhere from a couple minutes to a couple hours. After the wait, you should be left with a new `.gclient` file and `src/` directory, which you can confirm by running:
+
+```sh
+ls -la
+```
+
+Which should output something similar to this:
+![](/assets/blog-imgs/pqc/dir.png)
+
+#### 1c. Installing Dependencies
+
+If you're using [Ubuntu](https://ubuntu.com), Google makes installing Chromium's build dependencies easy, just use [`src/main/build/install-build-deps.sh`](https://chromium.googlesource.com/chromium/src/+/main/build/install-build-deps.sh). You likely already have all the required build dependencies installed, but here's the list:
+
+```
+curl
+git
+lsb_release
+python3
+sudo
+```
+
+#### 1d. Running Hooks
+
+Now we can run the "hooks" to download other required binaries, code, and tools:
+
+```sh
+gclient runhooks
+```
+
+This command shouldn't take too long and we will have working buildable code afterwards!
+
+### 2. Transplanting BoringSSL
+
+Now that our Chromium code is all set, we can transplant BoringSSL. To begin, we need to tell our computer to use a specific version of Chromium's source code that is compatible with the OQS BoringSSL fork.
+
+#### 2a. Chromium `117.0.5863.0`
+
+We want to use a specific [branch](https://git-scm.com/book/en/v2/Git-Branching-Branches-in-a-Nutshell) (version of the Chromium source code. Assuming we're still in `~/chromium`, this can be done with the following command:
+
+```sh
+git checkout tags/117.0.5863.0
+gclient sync
+```
+
+We run `gclient sync` to make sure everything is up-to-date.
+
+#### 2b. Switch to post-quantum `boringssl`
+
+Chromium already houses its own version of BoringSSL in `src/third_party/boringssl`, but we want to use the OQS version instead. To do this, we need to overwrite the default implementation of BoringSSL with the OQS version using `git`:
+
+```sh
+cd ~/chromium/src/third_party/boringssl/src
+git remote add oqs-bssl https://github.com/open-quantum-safe/boringssl git fetch oqs-bssl
+git checkout -b oqs-bssl-master 1ca41b49e9198f510991fb4f350b4a5fd4c1d5ff
+```
+
+This command adds the OQS version of BoringSSL as a new "source" for the repository (which was initially the [official BoringSSL repository](https://boringssl.googlesource.com/boringssl/)), fetches its code, and switches to it, thank goodness for `git`. We also specify a specific version of the OQS-enabled BoringSSL to use, specified with the `1ca41b49e9198f510991fb4f350b4a5fd4c1d5ff` hash.
+
+Now we've added post-quantum BoringSSL to Chromium, are we done? Not yet, but we're getting there.
+
+#### 2c. Installing `liboqs`
+
+OQS-BoringSSL is built on reference implementations of various post-quantum algorithms, and requires that you install them by installing [`liboqs`](https://github.com/open-quantum-safe/liboqs). To start, we need to clone the `liboqs` code and create a build directory:
+
+```sh
+cd ~
+git clone https://github.com/open-quantum-safe/liboqs.git --branch 0.8.0 --single-branch
+cd liboqs && mkdir build && cd build
+```
+
+There's nothing in `build/` yet because we need to compile the source code:
+
+```shell
+cmake .. -G"Ninja" -DCMAKE_INSTALL_PREFIX=~/chromium/src/third_party/boringssl/src/oqs -DOQS_USE_OPENSSL=OFF
+ninja && ninja install
+```
+
+#### 2d. Patching Chromium
+
+Chromium source code doesn't currently support PQC algorithms, so we must change the code with a [patch](https://opensource.com/article/18/8/diffs-patches)—a collection of small alterations to certain files that allow Chromium to support PQC:
+
+```sh
+cd ~/chromium
+curl -LO https://raw.githubusercontent.com/open-quantum-safe/oqs-demos/main/chromium/oqs-changes.patch
+git apply oqs-changes.patch
+```
+
+### 3. Building
+
+Now we're ready to start the compilation process, taking all source code files and compiling them into the binary we can use to browse the internet.
+
+#### 3a. BoringSSL Build Files
+
+There's still one small thing left, we need to generate the "build files" for BoringSSL. These provide information regarding how BoringSSL is integrated into Chromium, what the library might depend on, and how to correctly compile the code. We can create them with:
+
+```sh
+cd ~/chromium/src/third_party/boringssl
+python src/util/generate_build_files.py gn
+```
+
+#### 3b. Building Chromium
+
+The commands to build Chromium is deceptively simple:
+
+```sh
+cd ~/chromium/src
+gn args out/Default
+```
+
+Which will prompt you with a configuration file (that's opened with `vim`), where you should add the following lines:
+
+```sh
+is_debug = false
+symbol_level = 0
+enable_nacl = false
+```
+
+Then close the file with `:wq` and run one final command:
+
+```sh
+autoninja -C out/Default chrome
+```
+
+#### 3c. Notes
+
+The build process will likely take an [absurdly long](https://groups.google.com/a/chromium.org/g/chromium-dev/c/kwfR0vwXmKg#) time to compile, after which you should be left with a binary in `~/chromium/src/out/Default`, congrats! Also, building Chromium this way really isn't worth the time and effort and it's probably better to wait for an official version that supports PQC.
+
+# Updates!
+
+**Chromium Goes Quantum-Ready!**
+
+Since the initial writing of this post, there's been a major breakthrough in making post-quantum cryptography accessible to everyday web users. The latest builds of the Chromium browser now include a powerful new optional flag: "[TLS 1.3 hybridized Kyber support](https://www.thesslstore.com/blog/google-chrome-adds-support-for-a-hybrid-post-quantum-cryptographic-algorithm/)".
+
+**What This Means For You:**
+
+- **Post-Quantum Security at Your Fingertips:** With a few simple clicks, you can enable experimental support for the Kyber post-quantum key exchange algorithm directly within your Chromium-based browser (this includes Chrome, Edge, Brave, others).
+- **Hybrid Approach:** This implementation uses a hybrid model – your browser combines the quantum-resistant Kyber algorithm with traditional cryptography, providing enhanced security while maintaining compatibility with current websites.
+- **Blazing a Trail:** This development marks a significant milestone, making post-quantum cryptography more readily available to developers, researchers, security professionals, and curious tech enthusiasts everywhere.
+
+**How to Enable It**
+
+1. Make sure you're running an up-to-date version of a Chromium-based browser.
+2. Navigate to the flags settings page (typically 'chrome://flags' or 'edge://flags' depending on your browser)
+3. Search for "TLS 1.3 hybridized Kyber support" and change the setting to "Enabled."
+
+![](/assets/blog-imgs/pqc/experiment.png) 4. Restart your browser for the changes to take effect. 5. You can navigate to https://pq.cloudflareresearch.com/ to check if your browser is now PQC-enabled, and you should see the following if it is:
+![](/assets/blog-imgs/pqc/cloudflare.png)
+**Important Note:** This feature is still experimental and under active development. Proceed with caution and be aware that it might not yet be suitable for daily use on critical websites.
+
+**The Future is Quantum-Proof**
+
+The inclusion of post-quantum capabilities in Chromium marks an incredible step towards future-proofing the internet. As awareness grows and standardization continues, we can expect a seamless transition to a web world protected against the potential threat of quantum computing. Keep a close eye on this section for more updates!

@@ -4,15 +4,15 @@
   "name": "Conor Scheidt",
   "ascii": "crsche",
   "social": {
-    "github": "github",
-    "linkedin": "linkedin"
+    "github": "crsche",
+    "linkedin": "crsche"
   },
-  "email": "redacted",
+  "email": "me@crsche.com",
   "ps1_hostname": "crsche",
   "ps1_username": "visitor",
   "repo": "https://github.com/crsche/crsche.com",
-  "resume_url": "https://upload.wikimedia.org/wikipedia/commons/c/cc/Resume.pdf",
-  "bio": "Placeholder",
+  "resume_url": "/static/resume.pdf",
+  "bio": "I'm currently a student at Phillips Academy Andover. I'm interested in computer science, math, chemistry, and physics.",
 
   "colors": {
     "light": {

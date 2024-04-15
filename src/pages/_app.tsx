@@ -1,6 +1,9 @@
 import React from 'react';
 import '../styles/global.css';
+import { SpeedInsights } from '@vercel/speed-insights/next';
 import Head from 'next/head';
+import 'next/navigation';
+import { Analytics } from '@vercel/analytics/react';
 
 const App = ({ Component, pageProps }) => {
   const inputRef = React.useRef<HTMLInputElement>(null);
@@ -14,20 +17,17 @@ const App = ({ Component, pageProps }) => {
       <Head>
         <meta
           name="viewport"
-          content="initial-scale=1.0, width=device-width"
+          content="width=device-width"
           key="viewport"
-          maximum-scale="1"
+          inital-scale="1.0"
         />
       </Head>
 
-      <div
-        className="text-light-foreground dark:text-dark-foreground min-w-max text-xs md:min-w-full md:text-base"
-        onClick={onClickAnywhere}
-      >
-        <main className="bg-light-background dark:bg-dark-background w-full h-full p-2">
-          <Component {...pageProps} inputRef={inputRef} />
-        </main>
-      </div>
+      <main className="dark:bg-dark-background bg-light-background md:text-base text-light-foreground dark:text-dark-foreground p-2 h-full">
+        {/* <SpeedInsights /> */}
+        <Analytics />
+        <Component {...pageProps} inputRef={inputRef} />
+      </main>
     </>
   );
 };

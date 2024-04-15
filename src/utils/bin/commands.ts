@@ -3,6 +3,7 @@
 import * as bin from './index';
 import config from '../../../config.json';
 import * as cowsayLib from 'cowsay';
+import { getBlogData, getBlogSlugs } from '../blogs';
 
 // Help
 export const help = async (args: string[]): Promise<string> => {
@@ -27,6 +28,12 @@ Type 'sumfetch' to display summary.
 export const repo = async (args: string[]): Promise<string> => {
   window.open(`${config.repo}`);
   return 'Opening Github repository...';
+};
+
+// FIXME: Make this shit not hard coded
+export const blogs = async (args: string[]): Promise<string> => {
+  const blogs = ['Post-Quantum Cryptography [March 1 2024]'];
+  return blogs.join('\n');
 };
 
 // About
@@ -79,16 +86,25 @@ export const google = async (args: string[]): Promise<string> => {
 };
 
 export const duckduckgo = async (args: string[]): Promise<string> => {
+  if (!args.length) {
+    return 'Usage: duckduckgo [search term]';
+  }
   window.open(`https://duckduckgo.com/?q=${args.join(' ')}`);
   return `Searching DuckDuckGo for ${args.join(' ')}...`;
 };
 
 export const bing = async (args: string[]): Promise<string> => {
+  if (!args.length) {
+    return 'Usage: bing [search term]';
+  }
   window.open(`https://bing.com/search?q=${args.join(' ')}`);
   return `Wow, really? You are using Bing for ${args.join(' ')}?`;
 };
 
 export const reddit = async (args: string[]): Promise<string> => {
+  if (!args.length) {
+    return 'Usage: reddit [search term]';
+  }
   window.open(`https://www.reddit.com/search/?q=${args.join(' ')}`);
   return `Searching Reddit for ${args.join(' ')}...`;
 };

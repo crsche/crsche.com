@@ -24,6 +24,10 @@ const IndexPage: React.FC<IndexPageProps> = ({ inputRef }) => {
 
   const init = React.useCallback(() => setHistory(banner()), []);
 
+  const onClickAnywhere = () => {
+    inputRef.current.focus();
+  };
+
   React.useEffect(() => {
     init();
   }, [init]);
@@ -41,8 +45,14 @@ const IndexPage: React.FC<IndexPageProps> = ({ inputRef }) => {
         <title>{config.title}</title>
       </Head>
 
-      <div className="p-8 overflow-hidden h-full border-2 rounded border-light-yellow dark:border-dark-yellow">
-        <div ref={containerRef} className="overflow-y-auto h-full">
+      <div
+        className="overflow-hidden text-medium p-8 h-full border-2 rounded border-light-yellow dark:border-dark-yellow"
+        onClick={onClickAnywhere}
+      >
+        <div
+          ref={containerRef}
+          className="overflow-hidden overflow-y-auto h-full"
+        >
           <History history={history} />
 
           <Input
