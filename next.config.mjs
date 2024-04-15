@@ -12,7 +12,7 @@ const nextConfig = {
   async headers() {
     return [
       {
-        source: '/blogs/getBlogs',
+        source: '/api/getBlogs',
         headers: [
           {
             key: 'Cache-Control',
