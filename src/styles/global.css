@@ -51,7 +51,7 @@ div#__next > div:first-child {
 }
 
 img {
-  max-width: 100%;
+  max-width: 50%;
   height: auto;
   filter: grayscale(100%);
   opacity: 50%;
