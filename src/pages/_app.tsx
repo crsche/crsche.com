@@ -24,7 +24,7 @@ const App = ({ Component, pageProps }) => {
       </Head>
 
       <main className="dark:bg-dark-background bg-light-background md:text-base text-light-foreground dark:text-dark-foreground p-2 h-full">
-        {/* <SpeedInsights /> */}
+        <SpeedInsights />
         <Analytics />
         <Component {...pageProps} inputRef={inputRef} />
       </main>

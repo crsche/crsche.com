@@ -1,6 +1,6 @@
 import axios from 'axios';
 import config from '../../config.json';
-import { BlogPostData } from './blogs';
+import { BlogMetadata } from './blogs';
 
 export const getProjects = async () => {
   const { data } = await axios.get(
@@ -14,6 +14,12 @@ export const getReadme = async () => {
   return data;
 };
 
+export const getBlogs = async () => {
+  const metaData: BlogMetadata[] = await axios
+    .get('/api/getBlogs', { responseType: 'json' })
+    .then((res) => res.data);
+  return metaData;
+};
 
 export const getWeather = async (city: string) => {
   try {

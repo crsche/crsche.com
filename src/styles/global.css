@@ -57,6 +57,9 @@ img {
   opacity: 50%;
   /* filter: opacity(50%); */
 }
+td {
+  padding-right: 10px; /* No padding top/bottom, 15px left/right padding */
+}
 
 /**
  * Gruvbox dark theme

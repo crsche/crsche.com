@@ -14,6 +14,12 @@
   "resume_url": "/static/resume.pdf",
   "bio": "I'm currently a student at Phillips Academy Andover. I'm interested in computer science, math, chemistry, and physics.",
 
+  "blogRepo": {
+    "owner": "crsche",
+    "repo": "blogs",
+    "path": ""
+  },
+
   "colors": {
     "light": {
       "background": "#FBF1C9",

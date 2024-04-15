@@ -3,7 +3,6 @@
 import * as bin from './index';
 import config from '../../../config.json';
 import * as cowsayLib from 'cowsay';
-import { getBlogData, getBlogSlugs } from '../blogs';
 
 // Help
 export const help = async (args: string[]): Promise<string> => {
@@ -30,13 +29,13 @@ export const repo = async (args: string[]): Promise<string> => {
   return 'Opening Github repository...';
 };
 
-// FIXME: Make this shit not hard coded
-export const blogs = async (args: string[]): Promise<string> => {
-  const blogs = [
-    '<a href="/blogs/pqc">Post-Quantum Cryptography [March 1 2024]</a>',
-  ];
-  return blogs.join('\n');
-};
+// // FIXME: Make this shit not hard coded
+// export const blogs = async (args: string[]): Promise<string> => {
+//   const blogs = [
+//     '<a href="/blogs/pqc">Post-Quantum Cryptography [March 1 2024]</a>',
+//   ];
+//   return blogs.join('\n');
+// };
 
 // About
 export const about = async (args: string[]): Promise<string> => {
