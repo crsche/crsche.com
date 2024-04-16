@@ -1,7 +1,8 @@
 {
   "readmeUrl": "https://raw.githubusercontent.com/cveinnt/cveinnt/master/README.md",
-  "title": "Conor Scheidt",
-  "name": "Conor Scheidt",
+  "title": "conor.",
+  "name": "conor.",
+  "description": "conor scheidt's personal website",
   "ascii": "crsche",
   "social": {
     "github": "crsche",
@@ -12,7 +13,7 @@
   "ps1_username": "visitor",
   "repo": "https://github.com/crsche/crsche.com",
   "resume_url": "/static/resume.pdf",
-  "bio": "I'm currently a student at Phillips Academy Andover. I'm interested in computer science, math, chemistry, and physics.",
+  "bio": "I'm currently a student at Phillips Academy Andover. I'm interested in distributed systems, internet privacy, quantum mechanics, and (weirdly enough) physical chemistry.",
 
   "blogRepo": {
     "owner": "crsche",

@@ -5,6 +5,7 @@ import Head from 'next/head';
 import 'next/navigation';
 import { Analytics } from '@vercel/analytics/react';
 import { NextSeo } from 'next-seo';
+import config from '../../config.json';
 
 const App = ({ Component, pageProps }) => {
   const inputRef = React.useRef<HTMLInputElement>(null);
@@ -24,11 +25,11 @@ const App = ({ Component, pageProps }) => {
         />
       </Head>
       <NextSeo
-        title="conor."
-        description="conor scheidt\'s personal website"
+        title={config.title}
+        description={config.description}
         openGraph={{
-          title: 'conor.',
-          description: "conor scheidt's personal website",
+          title: config.title,
+          description: config.description,
           images: [
             {
               url: '/assets/preview.png',
