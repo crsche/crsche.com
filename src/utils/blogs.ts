@@ -63,6 +63,16 @@ async function getBlogDataFromURL(url: string): Promise<Buffer> {
     });
 }
 
+// FIXME: This is very hacky
+function endOfFrontmatter(buf: Buffer): number {
+  const start = buf.indexOf('---');
+  if (start === -1) {
+    return -1;
+  }
+  const end = buf.indexOf('---', start + 3);
+  return start + end + 3;
+}
+
 export async function getBlogsMetadata(): Promise<BlogMetadata[]> {
   const { data } = await octokit.request(
     'GET /repos/{owner}/{repo}/contents/{path}',
@@ -74,21 +84,26 @@ export async function getBlogsMetadata(): Promise<BlogMetadata[]> {
   );
   return Promise.all(
     (data as any[]).map(async (file) => {
-      const fData = await getBlogDataFromURL(file.download_url).catch((err) => {
-        throw new Error(err);
-      });
+      const content = await getBlogDataFromURL(file.download_url)
+        .catch((err) => {
+          throw new Error(err);
+        })
+        .then((fData) => {
+          const frontmatterEnd = endOfFrontmatter(fData);
+          const frontmatter = fData.slice(0, frontmatterEnd);
+          return serialize(frontmatter, {
+            mdxOptions: {
+              remarkPlugins: [
+                remarkGfm,
+                remarkPrism,
+                remarkFrontmatter,
+                remarkMdxFrontmatter,
+              ],
+            },
+            parseFrontmatter: true,
+          });
+        });
 
-      const content = await serialize(fData, {
-        mdxOptions: {
-          remarkPlugins: [
-            remarkGfm,
-            remarkPrism,
-            remarkFrontmatter,
-            remarkMdxFrontmatter,
-          ],
-        },
-        parseFrontmatter: true,
-      });
       const { title, date, tags } = content.frontmatter as any;
 
       return {
