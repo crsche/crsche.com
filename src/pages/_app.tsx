@@ -23,6 +23,10 @@ const App = ({ Component, pageProps }) => {
           key="viewport"
           inital-scale="1.0"
         />
+        <meta name="description" content={config.description} />
+        <meta name="keywords" content={config.keywords} />
+        <meta name="robots" content="all" />
+        <meta name="author" content={config.name} />
       </Head>
       <NextSeo
         title={config.title}

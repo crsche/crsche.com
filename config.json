@@ -1,13 +1,14 @@
 {
   "readmeUrl": "https://raw.githubusercontent.com/cveinnt/cveinnt/master/README.md",
   "title": "conor.",
-  "name": "conor.",
+  "name": "Conor Scheidt",
   "description": "conor scheidt's personal website",
   "ascii": "crsche",
   "social": {
     "github": "crsche",
     "linkedin": "crsche"
   },
+  "keywords": "personal blog, personal, blog, conor scheidt, student, developer",
   "email": "me@crsche.com",
   "ps1_hostname": "crsche",
   "ps1_username": "visitor",
