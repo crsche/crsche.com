@@ -34,7 +34,7 @@ const BlogPage: React.FC<BlogPageProps> = ({ post }) => {
         <title>{post.metadata.title}</title>
       </Head>
 
-      <div className="h-full max-w-full overflow-y-auto  p-8 border-2 rounded scroll-auto border-light-yellow dark:border-dark-yellow prose dark:prose-invert">
+      <div className="h-full max-w-full overflow-y-auto overflow-x-hidden  p-8 border-2 rounded scroll-auto border-light-yellow dark:border-dark-yellow prose dark:prose-invert">
         <MDXRemote {...post.content} />
       </div>
     </>

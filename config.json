@@ -13,7 +13,7 @@
   "ps1_hostname": "crsche",
   "ps1_username": "visitor",
   "repo": "https://github.com/crsche/crsche.com",
-  "resume_url": "/static/resume.pdf",
+  "resume_url": "/assets/resume.pdf",
   "bio": "I'm currently a student at Phillips Academy Andover. I'm interested in distributed systems, internet privacy, quantum mechanics, and (weirdly enough) physical chemistry.",
 
   "blogRepo": {

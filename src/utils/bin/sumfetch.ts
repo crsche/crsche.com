@@ -1,5 +1,4 @@
 import config from '../../../config.json';
-import 'cowsay';
 
 const sumfetch = async (args: string[]): Promise<string> => {
   return 'placeholder';

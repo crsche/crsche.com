@@ -46,7 +46,7 @@ const IndexPage: React.FC<IndexPageProps> = ({ inputRef }) => {
       </Head>
 
       <div
-        className="overflow-hidden text-medium p-8 h-full border-2 rounded border-light-yellow dark:border-dark-yellow"
+        className="overflow-hidden text-base p-8 h-full border-2 rounded border-light-yellow dark:border-dark-yellow"
         onClick={onClickAnywhere}
       >
         <div
