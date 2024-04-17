@@ -6,6 +6,7 @@ import 'next/navigation';
 import { Analytics } from '@vercel/analytics/react';
 import { NextSeo } from 'next-seo';
 import config from '../../config.json';
+import Maintenance from '../components/maintenance';
 
 const App = ({ Component, pageProps }) => {
   const inputRef = React.useRef<HTMLInputElement>(null);
@@ -13,6 +14,17 @@ const App = ({ Component, pageProps }) => {
   const onClickAnywhere = () => {
     inputRef.current.focus();
   };
+
+  if (process.env.NEXT_PUBLIC_MAINTENANCE === 'true') {
+    return (
+      <>
+        <Head>
+          <meta name="robots" content="noindex" />
+        </Head>
+        <Maintenance />
+      </>
+    );
+  }
 
   return (
     <>
